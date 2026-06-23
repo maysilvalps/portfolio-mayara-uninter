@@ -1,0 +1,425 @@
+/* ==========================================
+   CONFIGURAÇÕES GERAIS E VARIÁVEIS DE TEMA
+   ========================================== */
+:root {
+    --bg-color: #ffffff;
+    --bg-alt: #f8f9fa;
+    --text-color: #212529;
+    --primary-color: #e479c2; /* Roxo moderno */
+    --header-bg: rgba(255, 255, 255, 0.95);
+    --card-bg: #ffffff;
+    --border-color: #e5e7eb;
+}
+
+/* Modificadores aplicados via JavaScript para o Tema Escuro */
+body.dark-mode {
+    --bg-color: #0f172a;
+    --bg-alt: #1e293b;
+    --text-color: #f8fafc;
+    --primary-color: #830868;
+    --header-bg: rgba(15, 23, 42, 0.95);
+    --card-bg: #1e293b;
+    --border-color: #334155;
+}
+
+/* Reset de estilos de fábrica dos navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    scroll-behavior: smooth; /* Animação nativa de transição suave das âncoras */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
+    line-height: 1.6;
+}
+
+/* ==========================================
+   DIAGRAMAÇÃO VISUAL: HEADER & NAV
+   ========================================== */
+header {
+    background-color: var(--header-bg);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    backdrop-filter: blur(8px); /* Efeito borrado chique no fundo do menu */
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--primary-color);
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    font-size: 15px;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Botão de alternância de tema */
+#theme-toggle {
+    background: transparent;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    padding: 6px 14px;
+    cursor: pointer;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+#theme-toggle:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+/* ==========================================
+   SEÇÕES, GRID E CAPRICHO VISUAL
+   ========================================== */
+.section {
+    padding: 120px 5% 80px; /* Margem superior generosa devido ao menu fixo */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.bg-alt {
+    background-color: var(--bg-alt);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+h1 { font-size: 42px; margin-bottom: 10px; }
+h2 { font-size: 32px; margin-bottom: 30px; position: relative; }
+
+/* Grid responsivo para a formação e portfólio */
+.grid-2, .portfolio-grid {
+    display: flex;
+    gap: 30px;
+}
+
+.card, .card-formacao {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 280px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    /* Transições suaves pedidas no critério de capricho visual */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efeito Hover interativo nos elementos clicáveis do portfólio */
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ==========================================
+   AJUSTES DA SEÇÃO SOBRE MIM (COM FOTO)
+   ========================================== */
+.sobre-container {
+    display: flex;
+    align-items: center;
+    gap: 50px; /* Espaço entre a foto e o texto */
+}
+
+.sobre-foto img {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%; /* Entrega o corte perfeitamente redondo */
+    object-fit: cover;  /* Garante que a foto não fique esticada ou achatada */
+    border: 4px solid var(--primary-color); /* Borda estilizada com a cor do tema */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Efeito interativo discreto ao passar o mouse na foto */
+.sobre-foto img:hover {
+    transform: scale(1.03);
+}
+
+.sobre-texto {
+    flex: 1;
+}
+
+/* Estilização dos botões da introdução */
+.sobre-botoes {
+    margin-top: 25px;
+    display: flex;
+    gap: 15px;
+}
+
+.btn-github, .btn-contato-sobre {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.btn-github {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.btn-contato-sobre {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-github:hover, .btn-contato-sobre:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+/* ==========================================
+   FORMULÁRIO DE CONTATO
+   ========================================== */
+.contato-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+form {
+    max-width: 600px;
+    width: 50%;
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-size: 15px;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.btn-submit {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 14px 28px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    width: 100%;
+    transition: opacity 0.2s;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* ==========================================
+   ESTILIZAÇÃO DO MASCOTE INTERATIVO
+   ========================================== */
+/* O container do mascote */
+.mascote-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: flutuar 3s ease-in-out infinite; /* Efeito flutuante */
+}
+
+/* Corpo do Robô/Mascote */
+.mascote-corpo {
+    width: 140px;
+    height: 140px;
+    background-color: var(--primary-color);
+    border-radius: 40px;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Olhos */
+.mascote-olhos {
+    display: flex;
+    gap: 20px;
+}
+
+.olho {
+    width: 30px;
+    height: 30px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Pupila que vai se mover com o JS */
+.pupila {
+    width: 12px;
+    height: 12px;
+    background-color: #0f172a;
+    border-radius: 50%;
+    position: absolute;
+    transition: transform 0.05s linear; /* Movimento responsivo e rápido */
+}
+
+/* Boca Padrão (Sorriso sutil) */
+.mascote-boca {
+    width: 35px;
+    height: 10px;
+    border-bottom: 5px solid #ffffff;
+    border-radius: 0 0 15px 15px;
+    transition: all 0.2s ease;
+}
+
+/* Classe ativada por JS quando o usuário clica nos inputs (Boca de Espanto 'O') */
+.mascote-boca.surpreso {
+    height: 20px;
+    width: 20px;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+}
+
+/* Balão de fala divertido */
+.mascote-balao {
+    margin-top: 15px;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 6px 12px;
+    border-radius: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* ==========================================
+   FOOTER E ANIMAÇÕES GERAIS
+   ========================================== */
+footer {
+    text-align: center;
+    padding: 30px;
+    border-top: 1px solid var(--border-color);
+    font-size: 14px;
+    background-color: var(--bg-color);
+}
+
+/* Animação CSS para fazer o bichinho flutuar no ar */
+@keyframes flutuar {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ==========================================
+   CONSOLIDADO: MEDIA QUERIES (MOBILE)
+   ========================================== */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .grid-2, .portfolio-grid {
+        flex-direction: column; /* Quebra em coluna no mobile para não esmagar o texto */
+    }
+
+    h1 { font-size: 32px; }
+    
+    .section { padding-top: 160px; } /* Ajuste de espaçamento para telas menores */
+
+    .sobre-container {
+        flex-direction: column; /* Empilha a foto em cima do texto no mobile */
+        text-align: center;
+        gap: 30px;
+    }
+
+    .sobre-botoes {
+        justify-content: center; /* Centraliza os botões no mobile */
+    }
+
+    .sobre-foto img {
+        width: 200px;
+        height: 200px; /* Reduz um pouco o tamanho no celular */
+    }
+
+    .contato-wrapper {
+        flex-direction: column-reverse; /* No celular, o form fica em cima e o boneco embaixo */
+        gap: 40px;
+    }
+}
