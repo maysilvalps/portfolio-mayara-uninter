@@ -134,6 +134,7 @@ h2 { font-size: 32px; margin-bottom: 30px; position: relative; }
 .grid-2, .portfolio-grid {
     display: flex;
     gap: 30px;
+    margin-top: 40px;
 }
 
 .card, .card-formacao {
@@ -164,7 +165,7 @@ h2 { font-size: 32px; margin-bottom: 30px; position: relative; }
 
 /* ==========================================
    AJUSTES DA SEÇÃO SOBRE MIM (COM FOTO)
-   ========================================== */
+   ========================================= */
 .sobre-container {
     display: flex;
     align-items: center;
@@ -288,7 +289,6 @@ input:focus, textarea:focus {
 /* ==========================================
    ESTILIZAÇÃO DO MASCOTE INTERATIVO
    ========================================== */
-/* O container do mascote */
 .mascote-container {
     flex: 1;
     display: flex;
@@ -298,7 +298,6 @@ input:focus, textarea:focus {
     animation: flutuar 3s ease-in-out infinite; /* Efeito flutuante */
 }
 
-/* Corpo do Robô/Mascote */
 .mascote-corpo {
     width: 140px;
     height: 140px;
@@ -313,7 +312,6 @@ input:focus, textarea:focus {
     gap: 15px;
 }
 
-/* Olhos */
 .mascote-olhos {
     display: flex;
     gap: 20px;
@@ -330,7 +328,6 @@ input:focus, textarea:focus {
     justify-content: center;
 }
 
-/* Pupila que vai se mover com o JS */
 .pupila {
     width: 12px;
     height: 12px;
@@ -340,7 +337,6 @@ input:focus, textarea:focus {
     transition: transform 0.05s linear; /* Movimento responsivo e rápido */
 }
 
-/* Boca Padrão (Sorriso sutil) */
 .mascote-boca {
     width: 35px;
     height: 10px;
@@ -349,7 +345,6 @@ input:focus, textarea:focus {
     transition: all 0.2s ease;
 }
 
-/* Classe ativada por JS quando o usuário clica nos inputs (Boca de Espanto 'O') */
 .mascote-boca.surpreso {
     height: 20px;
     width: 20px;
@@ -357,7 +352,6 @@ input:focus, textarea:focus {
     border-radius: 50%;
 }
 
-/* Balão de fala divertido */
 .mascote-balao {
     margin-top: 15px;
     background-color: var(--card-bg);
@@ -379,7 +373,6 @@ footer {
     background-color: var(--bg-color);
 }
 
-/* Animação CSS para fazer o bichinho flutuar no ar */
 @keyframes flutuar {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -389,41 +382,81 @@ footer {
    CONSOLIDADO: MEDIA QUERIES (MOBILE)
    ========================================== */
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+    /* 1. Ajuste do espaçamento para que o menu de duas linhas não cubra o conteúdo */
+    .section { 
+        padding: 145px 5% 40px !important; 
+        min-height: auto !important; 
     }
 
+    /* 2. Ajuste estrutural do Menu em Linhas */
+    nav {
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 12px 5%;
+        gap: 10px;
+    }
+
+    .nav-botoes {
+        display: flex;
+        align-items: center;
+        order: 2; /* Mantém o botão alinhado à direita, na primeira linha */
+    }
+
+    .nav-links {
+        display: flex !important; 
+        width: 100%;
+        flex-direction: row !important; /* Mantém horizontal no celular */
+        justify-content: center; /* Centraliza todos os links perfeitamente */
+        gap: 12px; /* Espaço ideal para não estourar a tela */
+        padding: 10px 0 4px;
+        order: 3; /* Força os links a irem para a linha de baixo */
+    }
+
+    .nav-links a {
+        font-size: 13px; /* Tamanho reduzido para caber perfeitamente em telas pequenas */
+        white-space: nowrap; /* Evita que 'Sobre mim' se divida em duas linhas verticais */
+    }
+
+    /* 3. Correção do empilhamento e overlap dos cartões de projetos */
     .grid-2, .portfolio-grid {
-        flex-direction: column; /* Quebra em coluna no mobile para não esmagar o texto */
+        flex-direction: column;
+        gap: 25px;
+        margin-top: 20px; /* Cria distanciamento do texto introdutório */
+    }
+
+    .card, .card-formacao {
+        width: 100%;
+        position: relative;
+        top: 0;
     }
 
     h1 { font-size: 32px; }
-    
-    .section { padding-top: 208px; } /* Ajuste de espaçamento para telas menores */
+    h2 { font-size: 26px; margin-bottom: 20px; }
 
+    /* 4. Ajustes da seção sobre mim */
     .sobre-container {
-        flex-direction: column; /* Empilha a foto em cima do texto no mobile */
+        flex-direction: column;
         text-align: center;
         gap: 30px;
     }
 
     .sobre-botoes {
-        justify-content: center; /* Centraliza os botões no mobile */
+        justify-content: center;
     }
 
     .sobre-foto img {
         width: 200px;
-        height: 200px; /* Reduz um pouco o tamanho no celular */
+        height: 200px;
     }
 
+    /* 5. Correção do tamanho e respiro da caixinha de contato */
     .contato-wrapper {
-        flex-direction: column-reverse; /* No celular, o form fica em cima e o boneco embaixo */
+        flex-direction: column-reverse;
         gap: 40px;
     }
-}
-form {
-        width: 100%;   /* Faz a caixa ocupar toda a largura disponível no celular */
-        padding: 20px; /* Diminui o espaçamento interno para o texto não ficar apertado */
+
+    form {
+        width: 100% !important;   
+        padding: 25px !important; 
     }
+}
