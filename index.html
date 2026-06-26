@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link rel="icon" type="image/png" href="imagens/htmlicon.png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Portfólio</title>
+    <link rel="icon" type="image/png" href="imagens/htmlicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
                     </p>
                     
                     <div class="sobre-botoes">
-                        <a href="https://github.com/maysilvalps" target="_blank" class="btn-github">Meu GitHub</a>
+                        <a href="https://github.com/maysilvalps" target="_blank" rel="noopener noreferrer" class="btn-github">Meu GitHub</a>
                         <a href="#contato" class="btn-contato-sobre">Fale Comigo</a>
                     </div>
                 </div>
@@ -74,12 +74,12 @@
                     <div class="card">
                         <h3>Este Próprio Portfólio</h3>
                         <p>Website responsivo desenvolvido do zero utilizando HTML5, CSS3 puro e JavaScript para manipulação do DOM.</p>
-                        <a href="https://github.com/maysilvalps/portfolio-mayara-uninter" target="_blank">Ver Repositório</a>
+                        <a href="https://github.com/maysilvalps/portfolio-mayara-uninter" target="_blank" rel="noopener noreferrer">Ver Repositório</a>
                     </div>
                     <div class="card">
                         <h3>Gerenciador de Tarefas</h3>
                         <p>Aplicação web planejada para organizar rotinas diárias com armazenamento local usando JavaScript.</p>
-                        <a href="https://maysilvalps.github.io/gerenciador-tarefas/" target="_blank">Ver Site</a>
+                        <a href="https://maysilvalps.github.io/gerenciador-tarefas/" target="_blank" rel="noopener noreferrer">Ver Site Live 🚀</a>
                     </div>
                 </div>
             </div>
@@ -105,15 +105,15 @@
                     <form id="form-contato">
                         <div class="form-group">
                             <label for="nome">Nome Completo:</label>
-                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
                         </div>
                         <div class="form-group">
                             <label for="email">E-mail:</label>
-                            <input type="email" id="email" name="email" placeholder="seu-email@dominio.com">
+                            <input type="email" id="email" name="email" placeholder="seu-email@dominio.com" required>
                         </div>
                         <div class="form-group">
                             <label for="mensagem">Sua Mensagem:</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva como posso te ajudar..."></textarea>
+                            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva como posso te ajudar..." required></textarea>
                         </div>
                         <button type="submit" class="btn-submit">Enviar Mensagem</button>
                     </form>
@@ -125,7 +125,7 @@
     </main>
 
     <footer>
-        <p> Desenvolvido com HTML5, CSS3 & JavaScript por Mayara e vigiado pelo robô acima 👀</p>
+        <p>Todos os direitos reservados - Mayara Silva</p>
     </footer>
 
     <script src="script.js"></script>

@@ -1,5 +1,5 @@
 /* ==========================================
-   CONFIGURAÇÕES GERAIS E VARIÁVEIS DE TEMA
+   1. CONFIGURAÇÕES GERAIS E VARIÁVEIS (TEMA)
    ========================================== */
 :root {
     --bg-color: #ffffff;
@@ -22,13 +22,15 @@ body.dark-mode {
     --border-color: #334155;
 }
 
-/* Reset de estilos de fábrica dos navegadores */
+/* ==========================================
+   2. RESET DE ESTILOS & BASE
+   ========================================== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth; /* Animação nativa de transição suave das âncoras */
+    scroll-behavior: smooth; /* Transição suave das âncoras */
 }
 
 body {
@@ -39,14 +41,50 @@ body {
 }
 
 /* ==========================================
-   DIAGRAMAÇÃO VISUAL: HEADER & NAV
+   3. ESTRUTURA GLOBAL E SEÇÕES
+   ========================================== */
+.section {
+    padding: 120px 5% 80px; /* Margem superior devido ao menu fixo */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.bg-alt {
+    background-color: var(--bg-alt);
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Tipografia Base */
+h1 { 
+    font-size: 42px; 
+    margin-bottom: 10px; 
+}
+
+h2 { 
+    font-size: 32px; 
+    margin-bottom: 30px; 
+    position: relative; 
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+/* ==========================================
+   4. LAYOUT: HEADER & NAV
    ========================================== */
 header {
     background-color: var(--header-bg);
     position: fixed;
     top: 0;
     width: 100%;
-    backdrop-filter: blur(8px); /* Efeito borrado chique no fundo do menu */
+    backdrop-filter: blur(8px); /* Efeito borrado no fundo do menu */
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
 }
@@ -104,85 +142,24 @@ nav {
 }
 
 /* ==========================================
-   SEÇÕES, GRID E CAPRICHO VISUAL
+   5. SEÇÃO: SOBRE MIM (COM FOTO)
    ========================================== */
-.section {
-    padding: 120px 5% 80px; /* Margem superior generosa devido ao menu fixo */
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-}
-
-.bg-alt {
-    background-color: var(--bg-alt);
-}
-
-.container {
-    max-width: 1000px;
-    margin: 0 auto;
-    width: 100%;
-}
-
-.highlight {
-    color: var(--primary-color);
-}
-
-h1 { font-size: 42px; margin-bottom: 10px; }
-h2 { font-size: 32px; margin-bottom: 30px; position: relative; }
-
-/* Grid responsivo para a formação e portfólio */
-.grid-2, .portfolio-grid {
-    display: flex;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.card, .card-formacao {
-    background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    border-radius: 12px;
-    flex: 1;
-    min-width: 280px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    /* Transições suaves pedidas no critério de capricho visual */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efeito Hover interativo nos elementos clicáveis do portfólio */
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-}
-
-.card a {
-    display: inline-block;
-    margin-top: 20px;
-    color: var(--primary-color);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-/* ==========================================
-   AJUSTES DA SEÇÃO SOBRE MIM (COM FOTO)
-   ========================================= */
 .sobre-container {
     display: flex;
     align-items: center;
-    gap: 50px; /* Espaço entre a foto e o texto */
+    gap: 50px;
 }
 
 .sobre-foto img {
     width: 260px;
     height: 260px;
-    border-radius: 50%; /* Entrega o corte perfeitamente redondo */
-    object-fit: cover;  /* Garante que a foto não fique esticada ou achatada */
-    border: 4px solid var(--primary-color); /* Borda estilizada com a cor do tema */
+    border-radius: 50%; /* Foto redonda */
+    object-fit: cover;  /* Evita distorções na imagem */
+    border: 4px solid var(--primary-color);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
-/* Efeito interativo discreto ao passar o mouse na foto */
 .sobre-foto img:hover {
     transform: scale(1.03);
 }
@@ -191,7 +168,6 @@ h2 { font-size: 32px; margin-bottom: 30px; position: relative; }
     flex: 1;
 }
 
-/* Estilização dos botões da introdução */
 .sobre-botoes {
     margin-top: 25px;
     display: flex;
@@ -223,7 +199,40 @@ h2 { font-size: 32px; margin-bottom: 30px; position: relative; }
 }
 
 /* ==========================================
-   FORMULÁRIO DE CONTATO
+   6. COMPONENTES: GRIDS E CARDS (PORTFÓLIO)
+   ========================================== */
+.grid-2, .portfolio-grid {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.card, .card-formacao {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 280px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ==========================================
+   7. SEÇÃO: FORMULÁRIO DE CONTATO
    ========================================== */
 .contato-wrapper {
     display: flex;
@@ -287,7 +296,7 @@ input:focus, textarea:focus {
 }
 
 /* ==========================================
-   ESTILIZAÇÃO DO MASCOTE INTERATIVO
+   8. COMPONENTE EXTRA: MASCOTE INTERATIVO
    ========================================== */
 .mascote-container {
     flex: 1;
@@ -295,7 +304,7 @@ input:focus, textarea:focus {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    animation: flutuar 3s ease-in-out infinite; /* Efeito flutuante */
+    animation: flutuar 3s ease-in-out infinite;
 }
 
 .mascote-corpo {
@@ -334,7 +343,7 @@ input:focus, textarea:focus {
     background-color: #0f172a;
     border-radius: 50%;
     position: absolute;
-    transition: transform 0.05s linear; /* Movimento responsivo e rápido */
+    transition: transform 0.05s linear;
 }
 
 .mascote-boca {
@@ -363,32 +372,56 @@ input:focus, textarea:focus {
 }
 
 /* ==========================================
-   FOOTER E ANIMAÇÕES GERAIS
+   9. RODAPÉ (DIREITOS AUTORAIS)
    ========================================== */
 footer {
     text-align: center;
-    padding: 30px;
+    padding: 30px 0;
+    margin-top: 30px;
+    width: 100%;
     border-top: 1px solid var(--border-color);
-    font-size: 14px;
     background-color: var(--bg-color);
 }
 
+footer p {
+    font-size: 14px;
+    color: #94a3b8; 
+    font-weight: 400;
+}
+
+body.dark-mode footer p {
+    color: #64748b;
+}
+
+/* ==========================================
+   10. ANIMAÇÕES (KEYFRAMES)
+   ========================================== */
 @keyframes flutuar {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
 }
 
+@keyframes abrir { 
+    from { opacity: 0; transform: translateY(-5px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+@keyframes pulsarAviso { 
+    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.15); } 
+    70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); } 
+    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } 
+}
+
 /* ==========================================
-   CONSOLIDADO: MEDIA QUERIES (MOBILE)
+   11. RESPONSIVIDADE (MEDIA QUERIES)
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Ajuste do espaçamento para que o menu de duas linhas não cubra o conteúdo */
     .section { 
         padding: 145px 5% 40px !important; 
         min-height: auto !important; 
     }
 
-    /* 2. Ajuste estrutural do Menu em Linhas */
+    /* Menu Responsivo */
     nav {
         flex-wrap: wrap;
         justify-content: space-between;
@@ -399,29 +432,29 @@ footer {
     .nav-botoes {
         display: flex;
         align-items: center;
-        order: 2; /* Mantém o botão alinhado à direita, na primeira linha */
+        order: 2;
     }
 
     .nav-links {
         display: flex !important; 
         width: 100%;
-        flex-direction: row !important; /* Mantém horizontal no celular */
-        justify-content: center; /* Centraliza todos os links perfeitamente */
-        gap: 12px; /* Espaço ideal para não estourar a tela */
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 12px;
         padding: 10px 0 4px;
-        order: 3; /* Força os links a irem para a linha de baixo */
+        order: 3;
     }
 
     .nav-links a {
-        font-size: 13px; /* Tamanho reduzido para caber perfeitamente em telas pequenas */
-        white-space: nowrap; /* Evita que 'Sobre mim' se divida em duas linhas verticais */
+        font-size: 13px;
+        white-space: nowrap;
     }
 
-    /* 3. Correção do empilhamento e overlap dos cartões de projetos */
+    /* Empilhamento dos cards */
     .grid-2, .portfolio-grid {
         flex-direction: column;
         gap: 25px;
-        margin-top: 20px; /* Cria distanciamento do texto introdutório */
+        margin-top: 20px;
     }
 
     .card, .card-formacao {
@@ -433,7 +466,7 @@ footer {
     h1 { font-size: 32px; }
     h2 { font-size: 26px; margin-bottom: 20px; }
 
-    /* 4. Ajustes da seção sobre mim */
+    /* Seção Sobre Mim Mobile */
     .sobre-container {
         flex-direction: column;
         text-align: center;
@@ -449,7 +482,7 @@ footer {
         height: 200px;
     }
 
-    /* 5. Correção do tamanho e respiro da caixinha de contato */
+    /* Seção Contato Mobile */
     .contato-wrapper {
         flex-direction: column-reverse;
         gap: 40px;
