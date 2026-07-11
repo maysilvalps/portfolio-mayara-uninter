@@ -2,7 +2,7 @@
 
 Meu portfólio pessoal, desenvolvido do zero com HTML5, CSS3 e JavaScript puros, sem frameworks. Um espaço para reunir minha trajetória, formação e projetos enquanto estudo Análise e Desenvolvimento de Sistemas.
 
-🔗 **Repositório:** [github.com/maysilvalps/portfolio-mayara-uninter](https://github.com/maysilvalps/portfolio-mayara-uninter)
+🔗 [https://maysilvalps.github.io/portfolio-mayara-uninter/](https://maysilvalps.github.io/portfolio-mayara-uninter/)
 
 ---
 
