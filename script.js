@@ -1,4 +1,20 @@
 // =========================================================================
+// 0. REVELAÇÃO DAS SEÇÕES AO ROLAR A PÁGINA
+// =========================================================================
+const secoesAnimadas = document.querySelectorAll('.section.animate');
+
+const observerSecoes = new IntersectionObserver((entradas) => {
+    entradas.forEach((entrada) => {
+        if (entrada.isIntersecting) {
+            entrada.target.classList.add('in-view');
+            observerSecoes.unobserve(entrada.target);
+        }
+    });
+}, { threshold: 0.15 });
+
+secoesAnimadas.forEach((secao) => observerSecoes.observe(secao));
+
+// =========================================================================
 // 1. MANIPULAÇÃO DO TEMA (CLARO/ESCURO)
 // =========================================================================
 const themeToggleBtn = document.getElementById('theme-toggle');
@@ -82,4 +98,60 @@ camposFormulario.forEach(campo => {
     campo.addEventListener('blur', () => {
         mascoteBoca.classList.remove('surpreso');
     });
+});
+document.addEventListener("DOMContentLoaded", () => {
+    const mascote = document.getElementById("mascote-vivo");
+    if (!mascote) return;
+
+    // Seleciona a sua foto de perfil e os cards do site
+    const fotoPerfil = document.querySelector(".sobre-foto img");
+    const cards = document.querySelectorAll(".card, .card-formacao");
+
+    let posicaoAtualX = 100;
+    let posicaoAtualY = 200;
+
+    function moverMascote() {
+        const decisao = Math.floor(Math.random() * 3) + 1;
+        const imgMascote = mascote.querySelector(".mascote-img");
+
+        // Decisão 1: Ir pular em cima da foto de perfil
+        if (decisao === 1 && fotoPerfil) {
+            const rect = fotoPerfil.getBoundingClientRect();
+            posicaoAtualX = rect.left + window.scrollX + (rect.width / 2) - 25;
+            posicaoAtualY = rect.top + window.scrollY - 40; 
+        } 
+        // Decisão 2: Se esconder exatamente atrás de um dos cards
+        else if (decisao === 2 && cards.length > 0) {
+            const cardAleatorio = cards[Math.floor(Math.random() * cards.length)];
+            const rect = cardAleatorio.getBoundingClientRect();
+            posicaoAtualX = rect.left + window.scrollX + (rect.width / 2) - 25;
+            posicaoAtualY = rect.top + window.scrollY + (rect.height / 2) - 25;
+        } 
+        // Decisão 3: Andar aleatoriamente pelo fundo da tela
+        else {
+            const larguraMax = document.documentElement.scrollHeight > window.innerHeight ? document.documentElement.clientWidth - 70 : window.innerWidth - 70;
+            const alturaMax = document.documentElement.scrollHeight - 70;
+            
+            posicaoAtualX = Math.random() * larguraMax;
+            posicaoAtualY = Math.random() * (alturaMax - 200) + 100;
+        }
+
+        // Faz o GIF "olhar" para a direção certa da caminhada
+        const xAtual = parseFloat(mascote.style.left) || 0;
+        if (imgMascote) {
+            if (posicaoAtualX < xAtual) {
+                imgMascote.style.transform = "scaleX(1)";  // Olha para a esquerda
+            } else {
+                imgMascote.style.transform = "scaleX(-1)"; // Espelha e olha para a direita
+            }
+        }
+
+        // Aplica o movimento suave nas coordenadas X e Y
+        mascote.style.left = `${posicaoAtualX}px`;
+        mascote.style.top = `${posicaoAtualY}px`;
+    }
+
+    // Inicializa a primeira caminhada e programa para ele se mover a cada 5 segundos
+    moverMascote();
+    setInterval(moverMascote, 5000);
 });

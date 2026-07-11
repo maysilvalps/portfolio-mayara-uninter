@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio</title>
+    <title>Mayara Silva — Portfólio</title>
     <link rel="icon" type="image/png" href="imagens/htmlicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
         <nav>
-            <div class="logo">DevPortfólio</div>
+            <div class="logo">Mayara </div>
             <ul class="nav-links">
                 <li><a href="#sobre">Sobre mim</a></li>
                 <li><a href="#formacao">Formação</a></li>
@@ -23,21 +26,22 @@
     </header>
 
     <main>
-        
+
         <section id="sobre" class="section animate">
             <div class="container sobre-container">
-                
+
                 <div class="sobre-foto">
+                    <div class="foto-blob"></div>
                     <img src="imagens/fotoperfil.jpg" alt="Foto de perfil de Mayara">
                 </div>
 
                 <div class="sobre-texto">
-                    <h1>Olá, eu sou <span class="highlight">Mayara</span></h1>
-                    <h2>Estudante de Tecnologia & Desenvolvedora</h2>
+                    <h1>Olá, eu sou <span class="highlight">Mayara </h1>
+                    <h2>Estudante de Tecnologia &amp; Desenvolvedora</h2>
                     <p class="description">
                         Sou uma estudante apaixonada por tecnologia e sempre movida pela curiosidade de aprender mais. Gosto de resolver problemas reais e criar soluções digitais eficientes. Nos meus momentos livres, recarrego as energias lendo um bom livro ou assistindo a filmes que me inspiram. Acredito no aprendizado contínuo e busco todos os dias evoluir para ser uma pessoa melhor e uma profissional cada vez mais completa.
                     </p>
-                    
+
                     <div class="sobre-botoes">
                         <a href="https://github.com/maysilvalps" target="_blank" rel="noopener noreferrer" class="btn-github">Meu GitHub</a>
                         <a href="#contato" class="btn-contato-sobre">Fale Comigo</a>
@@ -54,10 +58,10 @@
                     <div class="card-formacao">
                         <h3>Educação Formal</h3>
                         <p><strong>Graduação em ADS</strong></p>
-                        <p>Uninter | Status: Em andamento</p>
+                        <p>Uninter · Em andamento</p>
                     </div>
                     <div class="card-formacao">
-                        <h3>Cursos Livres & Idiomas</h3>
+                        <h3>Cursos Livres &amp; Idiomas</h3>
                         <p><strong>Idiomas:</strong> Inglês Básico</p>
                         <p><strong>Cursos:</strong> Lógica de Programação, HTML5/CSS3 na Udemy</p>
                     </div>
@@ -68,8 +72,8 @@
         <section id="portfolio" class="section animate">
             <div class="container">
                 <h2>Meus Projetos</h2>
-                <p>Abaixo estão os projetos técnicos que desenvolvi para aplicar meus conhecimentos:</p>
-                
+                <p class="section-intro">Abaixo estão os projetos técnicos que desenvolvi para aplicar meus conhecimentos:</p>
+
                 <div class="portfolio-grid">
                     <div class="card">
                         <h3>Este Próprio Portfólio</h3>
@@ -88,9 +92,9 @@
         <section id="contato" class="section bg-alt animate">
             <div class="container">
                 <h2>Entre em Contato</h2>
-                
+
                 <div class="contato-wrapper">
-                    
+
                     <div class="mascote-container">
                         <div class="mascote-corpo">
                             <div class="mascote-olhos">
@@ -98,6 +102,8 @@
                                 <div class="olho"><div class="pupila"></div></div>
                             </div>
                             <div class="mascote-boca" id="mascote-boca"></div>
+                            <div class="mascote-bochecha bochecha-esq"></div>
+                            <div class="mascote-bochecha bochecha-dir"></div>
                         </div>
                         <p class="mascote-balao">Estou de olho! 👀</p>
                     </div>
@@ -125,7 +131,7 @@
     </main>
 
     <footer>
-        <p>Todos os direitos reservados - Mayara Silva</p>
+         <p>Todos os direitos reservados - Mayara Silva</p>
     </footer>
 
     <script src="script.js"></script>

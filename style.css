@@ -5,21 +5,30 @@
     --bg-color: #ffffff;
     --bg-alt: #f8f9fa;
     --text-color: #212529;
-    --primary-color: #e479c2; /* Roxo moderno */
-    --header-bg: rgba(255, 255, 255, 0.95);
+    --text-muted: #6b7280;
+    --primary-color: #e479c2; /* Rosa original */
+    --primary-soft: #fbe6f4;  /* Versão bem clara do rosa, para fundos suaves */
+    --header-bg: rgba(255, 255, 255, 0.9);
     --card-bg: #ffffff;
     --border-color: #e5e7eb;
+    --shadow-color: rgba(228, 121, 194, 0.16);
+
+    --font-display: 'Quicksand', 'Segoe UI', sans-serif;
+    --font-body: 'Nunito', 'Segoe UI', sans-serif;
 }
 
-/* Modificadores aplicados via JavaScript para o Tema Escuro */
+/* Tema escuro */
 body.dark-mode {
     --bg-color: #0f172a;
     --bg-alt: #1e293b;
     --text-color: #f8fafc;
-    --primary-color: #830868;
-    --header-bg: rgba(15, 23, 42, 0.95);
+    --text-muted: #94a3b8;
+    --primary-color: #830868; /* Roxo original do modo escuro */
+    --primary-soft: #2a1330;
+    --header-bg: rgba(15, 23, 42, 0.9);
     --card-bg: #1e293b;
     --border-color: #334155;
+    --shadow-color: rgba(0, 0, 0, 0.35);
 }
 
 /* ==========================================
@@ -29,22 +38,34 @@ body.dark-mode {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    scroll-behavior: smooth; /* Transição suave das âncoras */
+    font-family: var(--font-body);
+    scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }
 
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
-    line-height: 1.6;
+    line-height: 1.65;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 3px;
 }
 
 /* ==========================================
    3. ESTRUTURA GLOBAL E SEÇÕES
    ========================================== */
 .section {
-    padding: 120px 5% 80px; /* Margem superior devido ao menu fixo */
+    padding: 120px 5% 80px;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -55,25 +76,54 @@ body {
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 980px;
     margin: 0 auto;
     width: 100%;
 }
 
-/* Tipografia Base */
-h1 { 
-    font-size: 42px; 
-    margin-bottom: 10px; 
+/* Revelação suave das seções ao rolar */
+.section.animate {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-h2 { 
-    font-size: 32px; 
-    margin-bottom: 30px; 
-    position: relative; 
+.section.animate.in-view {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Tipografia base */
+h1 {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+h2 {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 34px;
+    text-align: center;
+}
+
+h3 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    margin-bottom: 8px;
 }
 
 .highlight {
     color: var(--primary-color);
+}
+
+.section-intro {
+    color: var(--text-muted);
+    text-align: center;
+    max-width: 520px;
+    margin: -16px auto 8px;
 }
 
 /* ==========================================
@@ -84,7 +134,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    backdrop-filter: blur(8px); /* Efeito borrado no fundo do menu */
+    backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--border-color);
     z-index: 1000;
 }
@@ -93,22 +143,28 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 18px 5%;
     max-width: 1200px;
     margin: 0 auto;
 }
 
 .logo {
+    font-family: var(--font-display);
     font-size: 22px;
-    font-weight: 800;
+    font-weight: 700;
     color: var(--primary-color);
-    letter-spacing: -0.5px;
+    letter-spacing: -0.3px;
+}
+
+.logo-sparkle {
+    display: inline-block;
+    animation: brilhar 2.5s ease-in-out infinite;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 28px;
 }
 
 .nav-links a {
@@ -128,17 +184,19 @@ nav {
     background: transparent;
     border: 2px solid var(--primary-color);
     color: var(--primary-color);
-    padding: 6px 14px;
+    padding: 7px 16px;
     cursor: pointer;
-    border-radius: 20px;
-    font-weight: 600;
+    border-radius: 30px;
+    font-weight: 700;
     font-size: 13px;
+    font-family: var(--font-display);
     transition: all 0.2s ease;
 }
 
 #theme-toggle:hover {
     background-color: var(--primary-color);
     color: #ffffff;
+    transform: translateY(-1px);
 }
 
 /* ==========================================
@@ -147,38 +205,62 @@ nav {
 .sobre-container {
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 60px;
+}
+
+.sobre-foto {
+    position: relative;
+    width: 260px;
+    height: 260px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.foto-blob {
+    position: absolute;
+    inset: -18px;
+    background-color: var(--primary-soft);
+    border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
+    z-index: 0;
+    animation: flutuar 6s ease-in-out infinite;
 }
 
 .sobre-foto img {
-    width: 260px;
-    height: 260px;
-    border-radius: 50%; /* Foto redonda */
-    object-fit: cover;  /* Evita distorções na imagem */
-    border: 4px solid var(--primary-color);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-}
-
-.sobre-foto img:hover {
-    transform: scale(1.03);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--card-bg);
+    box-shadow: 0 12px 28px var(--shadow-color);
 }
 
 .sobre-texto {
     flex: 1;
 }
 
+.wave {
+    display: inline-block;
+    animation: acenar 2.2s ease-in-out infinite;
+    transform-origin: 70% 70%;
+}
+
 .sobre-botoes {
-    margin-top: 25px;
+    margin-top: 26px;
     display: flex;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .btn-github, .btn-contato-sobre {
-    padding: 10px 20px;
+    padding: 12px 24px;
     text-decoration: none;
-    border-radius: 6px;
-    font-weight: 600;
+    border-radius: 30px;
+    font-weight: 700;
+    font-family: var(--font-display);
     font-size: 14px;
     transition: all 0.2s ease;
 }
@@ -199,36 +281,49 @@ nav {
 }
 
 /* ==========================================
-   6. COMPONENTES: GRIDS E CARDS (PORTFÓLIO)
+   6. COMPONENTES: GRIDS E CARDS (FORMAÇÃO / PORTFÓLIO)
    ========================================== */
 .grid-2, .portfolio-grid {
     display: flex;
-    gap: 30px;
-    margin-top: 40px;
+    gap: 26px;
+    margin-top: 10px;
 }
 
 .card, .card-formacao {
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    border-radius: 12px;
+    padding: 34px 28px;
+    border-radius: 24px;
     flex: 1;
-    min-width: 280px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    min-width: 260px;
+    text-align: center;
+    box-shadow: 0 6px 20px var(--shadow-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+.card:hover, .card-formacao:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 30px var(--shadow-color);
+}
+
+.card p, .card-formacao p {
+    color: var(--text-muted);
+}
+
+.card p strong, .card-formacao p strong {
+    color: var(--text-color);
 }
 
 .card a {
     display: inline-block;
-    margin-top: 20px;
+    margin-top: 18px;
     color: var(--primary-color);
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 700;
+    font-family: var(--font-display);
+}
+
+.card a:hover {
+    text-decoration: underline;
 }
 
 /* ==========================================
@@ -246,9 +341,8 @@ form {
     width: 50%;
     background-color: var(--card-bg);
     padding: 40px;
-    border-radius: 12px;
-    border: 1px solid var(--border-color);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+    border-radius: 24px;
+    box-shadow: 0 6px 20px var(--shadow-color);
 }
 
 .form-group {
@@ -258,15 +352,15 @@ form {
 label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
 }
 
 input, textarea {
     width: 100%;
-    padding: 12px;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
+    padding: 12px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 14px;
     background-color: var(--bg-color);
     color: var(--text-color);
     font-size: 15px;
@@ -283,15 +377,17 @@ input:focus, textarea:focus {
     color: #ffffff;
     padding: 14px 28px;
     border: none;
-    border-radius: 6px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 700;
+    font-family: var(--font-display);
     width: 100%;
-    transition: opacity 0.2s;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
 .btn-submit:hover {
+    transform: translateY(-2px);
     opacity: 0.9;
 }
 
@@ -311,14 +407,14 @@ input:focus, textarea:focus {
     width: 140px;
     height: 140px;
     background-color: var(--primary-color);
-    border-radius: 40px;
+    border-radius: 45px;
     position: relative;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 24px var(--shadow-color);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 14px;
 }
 
 .mascote-olhos {
@@ -347,50 +443,58 @@ input:focus, textarea:focus {
 }
 
 .mascote-boca {
-    width: 35px;
-    height: 10px;
-    border-bottom: 5px solid #ffffff;
+    width: 30px;
+    height: 8px;
+    border-bottom: 4px solid #ffffff;
     border-radius: 0 0 15px 15px;
     transition: all 0.2s ease;
 }
 
 .mascote-boca.surpreso {
-    height: 20px;
-    width: 20px;
-    border: 5px solid #ffffff;
+    height: 18px;
+    width: 18px;
+    border: 4px solid #ffffff;
     border-radius: 50%;
 }
+
+.mascote-bochecha {
+    position: absolute;
+    top: 62px;
+    width: 16px;
+    height: 9px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    opacity: 0.55;
+}
+
+.bochecha-esq { left: 16px; }
+.bochecha-dir { right: 16px; }
 
 .mascote-balao {
     margin-top: 15px;
     background-color: var(--card-bg);
-    border: 1px solid var(--border-color);
-    padding: 6px 12px;
-    border-radius: 15px;
+    border: 2px solid var(--primary-soft);
+    padding: 6px 14px;
+    border-radius: 20px;
     font-size: 13px;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 /* ==========================================
-   9. RODAPÉ (DIREITOS AUTORAIS)
+   9. RODAPÉ
    ========================================== */
 footer {
     text-align: center;
     padding: 30px 0;
     margin-top: 30px;
     width: 100%;
-    border-top: 1px solid var(--border-color);
     background-color: var(--bg-color);
 }
 
 footer p {
     font-size: 14px;
-    color: #94a3b8; 
-    font-weight: 400;
-}
-
-body.dark-mode footer p {
-    color: #64748b;
+    color: var(--text-muted);
+    font-weight: 600;
 }
 
 /* ==========================================
@@ -401,27 +505,28 @@ body.dark-mode footer p {
     50% { transform: translateY(-10px); }
 }
 
-@keyframes abrir { 
-    from { opacity: 0; transform: translateY(-5px); } 
-    to { opacity: 1; transform: translateY(0); } 
+@keyframes acenar {
+    0%, 100% { transform: rotate(0deg); }
+    20% { transform: rotate(14deg); }
+    40% { transform: rotate(-8deg); }
+    60% { transform: rotate(14deg); }
+    80% { transform: rotate(0deg); }
 }
 
-@keyframes pulsarAviso { 
-    0% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.15); } 
-    70% { box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); } 
-    100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } 
+@keyframes brilhar {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
 }
 
 /* ==========================================
    11. RESPONSIVIDADE (MEDIA QUERIES)
    ========================================== */
 @media (max-width: 768px) {
-    .section { 
-        padding: 145px 5% 40px !important; 
-        min-height: auto !important; 
+    .section {
+        padding: 145px 5% 40px !important;
+        min-height: auto !important;
     }
 
-    /* Menu Responsivo */
     nav {
         flex-wrap: wrap;
         justify-content: space-between;
@@ -429,17 +534,12 @@ body.dark-mode footer p {
         gap: 10px;
     }
 
-    .nav-botoes {
-        display: flex;
-        align-items: center;
-        order: 2;
-    }
-
     .nav-links {
-        display: flex !important; 
+        display: flex !important;
         width: 100%;
         flex-direction: row !important;
         justify-content: center;
+        flex-wrap: wrap;
         gap: 12px;
         padding: 10px 0 4px;
         order: 3;
@@ -450,23 +550,19 @@ body.dark-mode footer p {
         white-space: nowrap;
     }
 
-    /* Empilhamento dos cards */
     .grid-2, .portfolio-grid {
         flex-direction: column;
-        gap: 25px;
+        gap: 20px;
         margin-top: 20px;
     }
 
     .card, .card-formacao {
         width: 100%;
-        position: relative;
-        top: 0;
     }
 
-    h1 { font-size: 32px; }
-    h2 { font-size: 26px; margin-bottom: 20px; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 24px; margin-bottom: 22px; }
 
-    /* Seção Sobre Mim Mobile */
     .sobre-container {
         flex-direction: column;
         text-align: center;
@@ -477,19 +573,18 @@ body.dark-mode footer p {
         justify-content: center;
     }
 
-    .sobre-foto img {
+    .sobre-foto {
         width: 200px;
         height: 200px;
     }
 
-    /* Seção Contato Mobile */
     .contato-wrapper {
         flex-direction: column-reverse;
         gap: 40px;
     }
 
     form {
-        width: 100% !important;   
-        padding: 25px !important; 
+        width: 100% !important;
+        padding: 25px !important;
     }
 }
