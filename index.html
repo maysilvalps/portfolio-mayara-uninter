@@ -7,124 +7,161 @@
     <link rel="icon" type="image/png" href="imagens/htmlicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&family=Nunito:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <nav>
-            <div class="logo">Mayara </div>
+        <div class="nav-pill">
             <ul class="nav-links">
                 <li><a href="#sobre">Sobre mim</a></li>
-                <li><a href="#formacao">Formação</a></li>
+                <li><a href="#tecnologias">Tecnologias</a></li>
                 <li><a href="#portfolio">Portfólio</a></li>
                 <li><a href="#contato">Contato</a></li>
             </ul>
-            <button id="theme-toggle" aria-label="Alternar tema">Alternar Tema</button>
-        </nav>
+            <div class="header-controls">
+                <button id="theme-toggle" class="icon-btn" aria-label="Alternar tema" title="Mudar tema">
+                    <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="5"></line><line x1="12" y1="19" x2="12" y2="22"></line><line x1="4.2" y1="4.2" x2="6.3" y2="6.3"></line><line x1="17.7" y1="17.7" x2="19.8" y2="19.8"></line><line x1="2" y1="12" x2="5" y2="12"></line><line x1="19" y1="12" x2="22" y2="12"></line><line x1="4.2" y1="19.8" x2="6.3" y2="17.7"></line><line x1="17.7" y1="6.3" x2="19.8" y2="4.2"></line></svg>
+                    <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20 14.5a8.5 8.5 0 1 1-9-9.4 7 7 0 0 0 9 9.4z"></path></svg>
+                </button>
+                <button id="music-toggle" class="icon-btn" aria-label="Tocar música de fundo" title="Tocar música">
+                    <svg class="icon-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                    <svg class="icon-pause" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                </button>
+            </div>
+        </div>
     </header>
+
+    <!-- Player de áudio nativo invisível -->
+    <audio id="background-audio" loop>
+        <source src="musica/Pixies-Where IsMyMind.mp3" type="audio/mp3">
+        Seu navegador não suporta elemento de áudio.
+    </audio>
 
     <main>
 
+        <!-- SEÇÃO SOBRE MIM (Sem o botão do LinkedIn) -->
         <section id="sobre" class="section animate">
+            <div class="blob-decor blob-1"></div>
             <div class="container sobre-container">
+
+                <div class="sobre-texto">
+                    <p class="intro-script">oi, eu sou —</p>
+                    <h1 class="nome-serif">Mayara<span class="ponto">.</span></h1>
+                    <h2>Desenvolvedora <em>Front-End</em></h2>
+                    <p class="description">
+                        Estudante de Análise e Desenvolvimento de Sistemas na Uninter (Polo Rondonópolis). Sou apaixonada por front-end, estudo para me tornar full stack e acompanho de perto as tendências do mercado de tecnologia para criar experiências modernas, acessíveis e com impacto real.  
+
+Atualmente, desenvolvo aplicações web responsivas utilizando HTML5, CSS3 e JavaScript, criando projetos práticos do zero — como a estruturação de portfólios, páginas interativas e ferramentas organizacionais como gerenciadores de tarefas.
+
+Estou em constante evolução técnica, aprofundando meus conhecimentos em lógica de programação, versionamento com Git e GitHub, design de interfaces no Figma e expandindo meus estudos para dominar o desenvolvimento full stack de ponta a ponta.
+                    </p>
+
+                    <div class="sobre-botoes">
+                        <a href="https://github.com/maysilvalps" target="_blank" rel="noopener noreferrer" class="btn-github">GitHub</a>
+                    </div>
+                </div>
 
                 <div class="sobre-foto">
                     <div class="foto-blob"></div>
                     <img src="imagens/fotoperfil.jpg" alt="Foto de perfil de Mayara">
                 </div>
 
-                <div class="sobre-texto">
-                    <h1>Olá, eu sou <span class="highlight">Mayara </h1>
-                    <h2>Estudante de Tecnologia &amp; Desenvolvedora</h2>
-                    <p class="description">
-                        Sou uma estudante apaixonada por tecnologia e sempre movida pela curiosidade de aprender mais. Gosto de resolver problemas reais e criar soluções digitais eficientes. Nos meus momentos livres, recarrego as energias lendo um bom livro ou assistindo a filmes que me inspiram. Acredito no aprendizado contínuo e busco todos os dias evoluir para ser uma pessoa melhor e uma profissional cada vez mais completa.
-                    </p>
-
-                    <div class="sobre-botoes">
-                        <a href="https://github.com/maysilvalps" target="_blank" rel="noopener noreferrer" class="btn-github">Meu GitHub</a>
-                        <a href="#contato" class="btn-contato-sobre">Fale Comigo</a>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <section id="formacao" class="section bg-alt animate">
+        <!-- SEÇÃO TECNOLOGIAS (Estilo grade limpa da referência) -->
+        <section id="tecnologias" class="section bg-alt animate">
             <div class="container">
-                <h2>Minha Formação</h2>
-                <div class="grid-2">
-                    <div class="card-formacao">
-                        <h3>Educação Formal</h3>
-                        <p><strong>Graduação em ADS</strong></p>
-                        <p>Uninter · Em andamento</p>
+                <span class="eyebrow">Habilidades</span>
+                <h2>Tecnologias</h2>
+                <p class="section-intro">Ferramentas e linguagens que utilizo no desenvolvimento dos meus projetos:</p>
+
+                <div class="tech-grid">
+                    <div class="tech-card">
+                        <span>HTML5</span>
                     </div>
-                    <div class="card-formacao">
-                        <h3>Cursos Livres &amp; Idiomas</h3>
-                        <p><strong>Idiomas:</strong> Inglês Básico</p>
-                        <p><strong>Cursos:</strong> Lógica de Programação, HTML5/CSS3 na Udemy</p>
+                    <div class="tech-card">
+                        <span>CSS3</span>
+                    </div>
+                    <div class="tech-card">
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="tech-card">
+                        <span>Git</span>
+                    </div>
+                    <div class="tech-card">
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tech-card">
+                        <span>Figma</span>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SEÇÃO PROJETOS -->
         <section id="portfolio" class="section animate">
             <div class="container">
+                <span class="eyebrow">Projetos</span>
                 <h2>Meus Projetos</h2>
-                <p class="section-intro">Abaixo estão os projetos técnicos que desenvolvi para aplicar meus conhecimentos:</p>
+                <p class="section-intro">Abaixo estão os projetos práticos que desenvolvi para aplicar meus conhecimentos:</p>
 
                 <div class="portfolio-grid">
                     <div class="card">
                         <h3>Este Próprio Portfólio</h3>
-                        <p>Website responsivo desenvolvido do zero utilizando HTML5, CSS3 puro e JavaScript para manipulação do DOM.</p>
+                        <p>Website responsivo desenvolvido do zero utilizando HTML5, CSS3 puro e JavaScript.</p>
                         <a href="https://github.com/maysilvalps/portfolio-mayara-uninter" target="_blank" rel="noopener noreferrer">Ver Repositório</a>
                     </div>
                     <div class="card">
                         <h3>Gerenciador de Tarefas</h3>
-                        <p>Aplicação web planejada para organizar rotinas diárias com armazenamento local usando JavaScript.</p>
+                        <p>Aplicação web planejada para organizar rotinas diárias com armazenamento local.</p>
                         <a href="https://maysilvalps.github.io/gerenciador-tarefas/" target="_blank" rel="noopener noreferrer">Ver Site</a>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- SEÇÃO CONTATO (Com Instagram e ícone ajustado) -->
         <section id="contato" class="section bg-alt animate">
             <div class="container">
-                <h2>Entre em Contato</h2>
 
-                <div class="contato-wrapper">
-
-                    <div class="mascote-container">
-                        <div class="mascote-corpo">
-                            <div class="mascote-olhos">
-                                <div class="olho"><div class="pupila"></div></div>
-                                <div class="olho"><div class="pupila"></div></div>
-                            </div>
-                            <div class="mascote-boca" id="mascote-boca"></div>
-                            <div class="mascote-bochecha bochecha-esq"></div>
-                            <div class="mascote-bochecha bochecha-dir"></div>
-                        </div>
-                        <p class="mascote-balao">Estou de olho! 👀</p>
+                <div class="contato-content-area">
+                    <div class="contato-header">
+                        <span class="eyebrow">Vamos conversar</span>
+                        <h2>Entre em Contato</h2>
                     </div>
 
-                    <form id="form-contato">
-                        <div class="form-group">
-                            <label for="nome">Nome Completo:</label>
-                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-mail:</label>
-                            <input type="email" id="email" name="email" placeholder="seu-email@dominio.com" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="mensagem">Sua Mensagem:</label>
-                            <textarea id="mensagem" name="mensagem" rows="5" placeholder="Escreva como posso te ajudar..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn-submit">Enviar Mensagem</button>
-                    </form>
+                    <div class="contato-wrapper-ref">
+                        <div class="contato-lista-ref">
+                           
+                             <a href="https://instagram.com/maysilvalps" target="_blank" rel="noopener noreferrer" class="contato-item-ref">
+                                <div class="contato-icone-circulo">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                                </div>
+                                <span>/maysilvalps</span>
+                            </a>
 
+                            <a href="https://www.linkedin.com/in/maysilvalps/" target="_blank" rel="noopener noreferrer" class="contato-item-ref">
+                                <div class="contato-icone-circulo">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </div>
+                                <span>/maysilvalps</span>
+                            </a>
+
+                           
+
+                            <a href="mailto:maysilvalps@gmail.com" class="contato-item-ref">
+                                <div class="contato-icone-circulo">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.717v15.43h24v-15.43l-12 9.717z"/></svg>
+                                </div>
+                                <span>maysilvalps@gmail.com</span>
+                            </a>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </section>
 
