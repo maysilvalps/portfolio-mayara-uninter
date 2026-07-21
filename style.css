@@ -759,6 +759,11 @@ footer p {
         text-align: center;
     }
 
+    @media (max-width: 850px) {
+    #sobre {
+        padding-top: 160px;
+    }
+}
     .sobre-botoes {
         justify-content: center;
     }
