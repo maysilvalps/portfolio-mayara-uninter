@@ -65,7 +65,7 @@ themeToggleBtn.addEventListener('click', () => {
 });
 
 // =========================================================================
-// CONTROLE DE ÁUDIO NATIVO (MP3)
+// 4. CONTROLE DE ÁUDIO NATIVO (MP3)
 // =========================================================================
 const audio = document.getElementById('background-audio');
 const musicToggleBtn = document.getElementById('music-toggle');
@@ -89,45 +89,34 @@ musicToggleBtn.addEventListener('click', () => {
     }
 });
 
-// Função chamada automaticamente pelo YouTube quando a API carrega
-window.onYouTubeIframeAPIReady = function() {
-    player = new YT.Player('youtube-player', {
-        height: '200',
-        width: '200',
-        videoId: 'OJ62RzJkYUo',
-        playerVars: {
-            'autoplay': 0,
-            'loop': 1,
-            'playlist': 'OJ62RzJkYUo',
-            'controls': 0
-        },
-        events: {
-            'onReady': onPlayerReady
+// =========================================================================
+// 5. GERADOR AUTOMÁTICO DE BRILHOS NO FUNDO DA SEÇÃO SOBRE
+// =========================================================================
+document.addEventListener("DOMContentLoaded", () => {
+    const secaoSobre = document.getElementById("sobre");
+    const container = document.querySelector(".sparkles-container");
+    
+    if (container && secaoSobre) {
+        const quantidadeBrilhos = 30;
+
+        for (let i = 0; i < quantidadeBrilhos; i++) {
+            const sparkle = document.createElement("div");
+            sparkle.classList.add("sparkle");
+
+            // Distribui aleatoriamente usando a largura e altura exatas da seção sobre
+            sparkle.style.left = Math.random() * secaoSobre.clientWidth + "px";
+            sparkle.style.top = Math.random() * secaoSobre.clientHeight + "px";
+
+            // Tamanho variado (entre 3px e 7px)
+            const tamanho = Math.random() * 4 + 3;
+            sparkle.style.width = tamanho + "px";
+            sparkle.style.height = tamanho + "px";
+
+            // Atraso e duração aleatórios
+            sparkle.style.animationDuration = (Math.random() * 3 + 3) + "s";
+            sparkle.style.animationDelay = (Math.random() * 5) + "s";
+
+            container.appendChild(sparkle);
         }
-    });
-};
-
-function onPlayerReady(event) {
-    playerReady = true;
-}
-
-// Controle do botão de música integrado
-musicToggleBtn.addEventListener('click', () => {
-    // Se o player do YouTube ainda estiver carregando, evita erros
-    if (!playerReady || !player) {
-        console.log("O player ainda está carregando, aguarde um segundo...");
-        return;
-    }
-
-    const estado = player.getPlayerState();
-
-    if (estado === YT.PlayerState.PLAYING) {
-        player.pauseVideo();
-        musicToggleBtn.classList.remove('music-playing');
-        isPlaying = false;
-    } else {
-        player.playVideo();
-        musicToggleBtn.classList.add('music-playing');
-        isPlaying = true;
     }
 });
